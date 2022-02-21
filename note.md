@@ -1,0 +1,5 @@
+let result = await   knex("schedule")
+    .join('client','schedule.emailClient', 'client.email')
+    .join('room','schedule.idRoom','room.id')
+    .join('doctor','doctor.id','schedule.idDoctor')
+    .select('schedule.id','schedule.title','client.name as nameClient','doctor.name as nameDoctor','room.name as Room','schedule.hours','schedule.dateExamination')
